@@ -266,14 +266,17 @@ class mpu6050:
         gyro = self.get_gyro_data()
 
         return [accel, gyro, temp]
+    def main(self):
+        mpu = mpu6050(0x68)
+        while True:
+            # print(mpu.read_i2c_word_all(100))
+            [accel, gyro, temp] = mpu.get_all_data()
+
+
+            print(f"Acceleration: X={accel['x']:.2f}g, Y={accel['y']:.2f}g, Z={accel['z']:.2f}g")
+            print(f"Rotation: X={gyro['x']:.2f}°/s, Y={gyro['y']:.2f}°/s, Z={gyro['z']:.2f}°/s")
+            print(f"Temperature ={temp:.2f}°C")
 
 if __name__ == "__main__":
     mpu = mpu6050(0x68)
-    while True:
-        # print(mpu.read_i2c_word_all(100))
-        [accel, gyro, temp] = mpu.get_all_data()
-
-
-        print(f"Acceleration: X={accel['x']:.2f}g, Y={accel['y']:.2f}g, Z={accel['z']:.2f}g")
-        print(f"Rotation: X={gyro['x']:.2f}°/s, Y={gyro['y']:.2f}°/s, Z={gyro['z']:.2f}°/s")
-        print(f"Temperature ={temp:.2f}°C")
+    mpu.main()

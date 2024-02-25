@@ -26,8 +26,11 @@ class HMC5883L:
         y = self.read_i2c_word(0x07)
         z = self.read_i2c_word(0x05)
         return {'x': x, 'y': y, 'z': z}
+    def main(self):
+        hmc = HMC5883L(0x1E)
+        while True:
+            print(hmc.read_magnetometer())
 
 if __name__ == "__main__":
     hmc = HMC5883L(0x1E)
-    while True:
-        print(hmc.read_magnetometer())
+    hmc.main()
