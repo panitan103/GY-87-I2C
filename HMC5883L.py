@@ -3,6 +3,7 @@ class HMC5883L:
     def __init__(self, address=0x1E,bus=1):
         self.bus = smbus.SMBus(bus)
         self.address = address
+    def set_continuous_mode(self):
         self.bus.write_byte_data(self.address, 0x02, 0x00)
     def read_i2c_word(self, register):
         """Read two i2c registers and combine them.
@@ -28,6 +29,7 @@ class HMC5883L:
         return {'x': x, 'y': y, 'z': z}
     def main(self):
         hmc = HMC5883L(0x1E)
+        hmc.set_continuous_mode()
         while True:
             print(hmc.read_magnetometer())
 
