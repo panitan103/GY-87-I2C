@@ -9,6 +9,7 @@ class GY87:
         self.mpu = mpu6050(mpu_address)
         self.hmc = HMC5883L(hmc_address)
         self.bmp = BMP085(bmp_address)
+    def bypass_i2c(self):
         self.mpu.bypass_i2c()
     def get_all_data(self):
         accel = self.mpu.get_accel_data()
