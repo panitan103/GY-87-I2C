@@ -1,6 +1,7 @@
 #from https://github.com/m-rtijn/mpu6050
 
 import smbus
+import time
 
 class mpu6050:
 
@@ -276,6 +277,7 @@ class mpu6050:
             print(f"Acceleration: X={accel['x']:.2f}g, Y={accel['y']:.2f}g, Z={accel['z']:.2f}g")
             print(f"Rotation: X={gyro['x']:.2f}°/s, Y={gyro['y']:.2f}°/s, Z={gyro['z']:.2f}°/s")
             print(f"Temperature ={temp:.2f}°C")
+            time.sleep(0.1)
 
 if __name__ == "__main__":
     mpu = mpu6050(0x68)
