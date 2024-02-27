@@ -145,7 +145,7 @@ class mpu6050:
             else:
                 return -1
 
-    def get_accel_data(self, g = False):
+    def get_accel_data(self, g = True):
         """Gets and returns the X, Y and Z values from the accelerometer.
 
         If g is True, it will return the data in g
@@ -274,7 +274,7 @@ class mpu6050:
             [accel, gyro, temp] = mpu.get_all_data()
 
 
-            print(f"Acceleration: X={accel['x']:.2f}g, Y={accel['y']:.2f}g, Z={accel['z']:.2f}g")
+            print(f"Acceleration: X={accel['x']:.2f}m/s², Y={accel['y']:.2f}m/s², Z={accel['z']:.2f}m/s²")
             print(f"Rotation: X={gyro['x']:.2f}rad/s, Y={gyro['y']:.2f}rad/s, Z={gyro['z']:.2f}rad/s")
             print(f"Temperature ={temp:.2f}°C")
             time.sleep(0.1)
