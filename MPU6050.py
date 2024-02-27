@@ -2,7 +2,7 @@
 
 import smbus
 import time
-
+from math import radians
 class mpu6050:
 
     # Global Variables
@@ -250,9 +250,9 @@ class mpu6050:
             print("Unkown range - gyro_scale_modifier set to self.GYRO_SCALE_MODIFIER_250DEG")
             gyro_scale_modifier = self.GYRO_SCALE_MODIFIER_250DEG
 
-        x = x / gyro_scale_modifier
-        y = y / gyro_scale_modifier
-        z = z / gyro_scale_modifier
+        x = radians(x / gyro_scale_modifier)
+        y = radians(y / gyro_scale_modifier)
+        z = radians(z / gyro_scale_modifier)
 
         return {'x': x, 'y': y, 'z': z}
     def bypass_i2c(self):
@@ -275,7 +275,7 @@ class mpu6050:
 
 
             print(f"Acceleration: X={accel['x']:.2f}g, Y={accel['y']:.2f}g, Z={accel['z']:.2f}g")
-            print(f"Rotation: X={gyro['x']:.2f}°/s, Y={gyro['y']:.2f}°/s, Z={gyro['z']:.2f}°/s")
+            print(f"Rotation: X={gyro['x']:.2f}rad/s, Y={gyro['y']:.2f}rad/s, Z={gyro['z']:.2f}rad/s")
             print(f"Temperature ={temp:.2f}°C")
             time.sleep(0.1)
 
