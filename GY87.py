@@ -23,9 +23,9 @@ class GY87:
             [accel, gyro, temp, mag, pressure]=self.get_all_data()
             # print(self.get_all_data())
 
-            print(f"Linear Acceleration: X={accel['x']:.2f} m/s2, Y={accel['y']:.2f} m/s2, Z={accel['z']:.2f} m/s2")
-            print(f"Angular Acceleration: X={gyro['x']:.2f} °/s2, Y={gyro['y']:.2f} °/s2, Z={gyro['z']:.2f} °/s2")
-            print(f"Temperature ={temp:.2f} °C")
+            print(f"Acceleration: X={accel['x']:.2f}g, Y={accel['y']:.2f}g, Z={accel['z']:.2f}g")
+            print(f"Rotation: X={gyro['x']:.2f}°/s, Y={gyro['y']:.2f}°/s, Z={gyro['z']:.2f}°/s")
+            print(f"Temperature ={temp:.2f}°C")
             print(f"Magnetrometer: X={mag['x']:.2f} µT, Y={mag['y']:.2f} µT, Z={mag['z']:.2f} µT")
             print(f"Pressure= {pressure:.2f} hPa")
             print("")
